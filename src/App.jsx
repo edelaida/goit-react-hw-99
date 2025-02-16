@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { TodoList } from './components/TodoList/TodoList';
-import { fetchTodos } from './redux/tasksOps';
+import { TodoList } from './components/TodoList/TodoList.jsx';
+import { fetchTodos } from './redux/tasksOps.js';
 import { useEffect } from 'react';
 
 const App = () => {

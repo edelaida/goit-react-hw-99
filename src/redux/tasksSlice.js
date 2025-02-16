@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addTodoThunk, deleteTodoThunk, fetchTodos, toggleTodoThunk } from './tasksOps';
+import { addTodoThunk, deleteTodoThunk, fetchTodos, toggleTodoThunk } from './tasksOps.js';
 
 const initialState = {
   items: [],

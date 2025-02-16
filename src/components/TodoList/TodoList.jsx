@@ -3,7 +3,7 @@ import { AddForm } from './AddForm';
 import { List } from './List';
 import { SearchBar } from './SearchBar';
 import s from './TodoList.module.css';
-import { selectIsError, selectIsLoading } from '../../redux/taskSlice';
+import { selectIsError, selectIsLoading } from '../../redux/tasksSlice';
 export const TodoList = () => {
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectIsError);
