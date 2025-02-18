@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTasks } from '../../redux/taskSlice';
+import { selectTasks } from '../../redux/tasksSlice.js';
 import s from './TodoList.module.css';
 import { selectSearchStr } from '../../redux/searchSlice';
 import { deleteTodoThunk, toggleTodoThunk } from '../../redux/tasksOps';
