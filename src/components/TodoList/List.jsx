@@ -1,11 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilteredData } from '../../redux/tasksSlice.js';
+import { selectFilteredDataMemo } from '../../redux/tasksSlice.js';
 import s from './TodoList.module.css';
 import { selectSearchStr } from '../../redux/searchSlice';
 import { deleteTodoThunk, toggleTodoThunk } from '../../redux/tasksOps';
 
 export const List = () => {
-  const tasks = useSelector(selectFilteredData);
+  const tasks = useSelector(selectFilteredDataMemo);
   const searchStr = useSelector(selectSearchStr);
   const sortedData = tasks.filter(task => task.todo.toLowerCase().trim().includes(searchStr.toLowerCase().trim()));
   
