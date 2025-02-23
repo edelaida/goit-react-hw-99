@@ -1,18 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectTasks } from '../../redux/tasksSlice.js';
+import { selectFilteredData } from '../../redux/tasksSlice.js';
 import s from './TodoList.module.css';
 import { selectSearchStr } from '../../redux/searchSlice';
 import { deleteTodoThunk, toggleTodoThunk } from '../../redux/tasksOps';
 
 export const List = () => {
-  const tasks = useSelector(selectTasks);
+  const tasks = useSelector(selectFilteredData);
   const searchStr = useSelector(selectSearchStr);
-  const filteredData = tasks.filter(task => task.todo.toLowerCase().trim().includes(searchStr.toLowerCase().trim()));
+  const sortedData = tasks.filter(task => task.todo.toLowerCase().trim().includes(searchStr.toLowerCase().trim()));
+  
   const dispatch = useDispatch();
-
+ 
   return (
     <ul className={s.list}>
-      {filteredData.map(item => (
+      {sortedData.map(item => (
         <li className={s.item} key={item.id}>
           <input type='checkbox' checked={item.completed} onChange={() => dispatch(toggleTodoThunk(item))} />
           <p>{item.todo}</p>

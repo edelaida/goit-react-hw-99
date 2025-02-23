@@ -1,5 +1,6 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { addTodoThunk, deleteTodoThunk, fetchTodos, toggleTodoThunk } from './tasksOps.js';
+import { selectFilter } from './filterSlice.js';
 
 const initialState = {
   items: [],
@@ -47,3 +48,23 @@ export const tasksReducer = slice.reducer;
 export const selectTasks = state => state.tasks.items;
 export const selectIsLoading = state => state.tasks.isLoading;
 export const selectIsError = state => state.tasks.isError;
+
+export const selectFilteredData = state => {
+  const tasks = selectTasks(state);
+  const filter = selectFilter(state);
+
+  switch (filter) {
+    case 'active':
+      return tasks.filter(todo => !todo.completed);
+    case 'completed':
+      return tasks.filter(todo => todo.completed);
+    default:
+      return tasks;
+  }
+};
+
+export const selectUncompletedTodos = state => {
+  //console.log('UNCOMPLETED DONE');
+  const tasks = selectTasks(state);
+  return tasks.reduce((total, curr) => (curr.completed ? total : total + 1), 0);
+};
